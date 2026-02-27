@@ -34,6 +34,29 @@ pnpm dev
 
 This opens the site at `http://localhost:5173` with hot module replacement -- edits to HTML, CSS, and JS are reflected instantly in the browser.
 
+### Testing download links locally
+
+The platform-specific download buttons use URLs injected at build time by the CI deploy workflow. To test this locally:
+
+1. Copy `.env.local.example` to `.env.local`:
+   ```bash
+   cp .env.local.example .env.local
+   ```
+2. Edit `.env.local` and set `VITE_DOWNLOAD_TAG` to the release tag you want to test (e.g. `v0.1.15`).
+3. Build and preview:
+   ```bash
+   pnpm build:tagged   # builds then opens the production preview at http://localhost:4173
+   ```
+   Or just build and inspect the output:
+   ```bash
+   pnpm build
+   grep -o 'FlowSTT[^"]*' dist/assets/index-*.js
+   ```
+
+When `VITE_DOWNLOAD_TAG` is not set (default `pnpm dev` / `pnpm build`), all macOS and Windows download buttons fall back to `https://github.com/flowstt/flowstt/releases/latest`.
+
+> `.env.local` is gitignored -- it will not be committed.
+
 ### Other commands
 
 ```bash
@@ -142,7 +165,6 @@ The workflow can also be triggered manually via the "Run workflow" button in the
 
 Some content uses `<span class="placeholder-badge">Coming soon</span>` or similar markers for information not yet available:
 
-- Download links / release artifacts
 - License type
 - Code of conduct
 - Community channels

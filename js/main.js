@@ -121,6 +121,15 @@
 
   var RELEASES_BASE = 'https://github.com/flowstt/flowstt/releases';
 
+  // Direct download URLs injected at build time by vite.config.js.
+  // These are compile-time constants replaced with string literals in the bundle.
+  // When VITE_DOWNLOAD_TAG was not set during the build, they fall back to
+  // RELEASES_BASE + '/latest' so local dev and pre-release deploys work fine.
+  /* global __DOWNLOAD_MACOS_ARM__, __DOWNLOAD_MACOS_INTEL__, __DOWNLOAD_WINDOWS__ */
+  var DL_MACOS_ARM = __DOWNLOAD_MACOS_ARM__;
+  var DL_MACOS_INTEL = __DOWNLOAD_MACOS_INTEL__;
+  var DL_WINDOWS = __DOWNLOAD_WINDOWS__;
+
   /**
    * Detect the user's OS from navigator.userAgentData (modern) or
    * navigator.userAgent (fallback). Returns 'windows', 'macos', or 'other'.
@@ -142,28 +151,32 @@
 
   /**
    * Build download button content for a given platform.
-   * Returns { label, badgeText, href }.
+   * Returns { label, badgeText, href, intelHref }.
+   * intelHref is only set for macOS (secondary Intel Mac link).
    */
   function getDownloadConfig(platform) {
     if (platform === 'windows') {
       return {
         label: 'Download for Windows',
         badgeText: 'Windows',
-        href: RELEASES_BASE + '/latest'
+        href: DL_WINDOWS,
+        intelHref: null
       };
     }
     if (platform === 'macos') {
       return {
         label: 'Download for macOS',
         badgeText: 'macOS',
-        href: RELEASES_BASE + '/latest'
+        href: DL_MACOS_ARM,
+        intelHref: DL_MACOS_INTEL
       };
     }
     // Linux or unknown — link to the releases page
     return {
       label: 'View Releases',
       badgeText: null,
-      href: RELEASES_BASE
+      href: RELEASES_BASE,
+      intelHref: null
     };
   }
 
@@ -181,6 +194,20 @@
       badge.className = 'btn-platform-badge';
       badge.textContent = config.badgeText;
       labelEl.appendChild(badge);
+    }
+
+    // Add secondary Intel Mac link directly after the button when applicable.
+    if (config.intelHref) {
+      // Only insert once — guard against double-run.
+      var existingIntel = btn.parentNode && btn.parentNode.querySelector('.btn-intel-mac');
+      if (!existingIntel) {
+        var intelLink = document.createElement('a');
+        intelLink.href = config.intelHref;
+        intelLink.className = 'btn-intel-mac';
+        intelLink.textContent = 'Intel Mac';
+        // Insert immediately after the primary button.
+        btn.parentNode.insertBefore(intelLink, btn.nextSibling);
+      }
     }
   }
 

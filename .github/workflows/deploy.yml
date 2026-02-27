@@ -33,6 +33,22 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Resolve latest release tag for download URLs
+        # Query the latest published (non-draft, non-pre-release) release tag
+        # and export it so Vite can bake direct installer URLs into the bundle.
+        # Uses || true so that a missing release does not fail the build;
+        # vite.config.js falls back to /releases/latest when the var is unset.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TAG=$(gh release list --repo flowstt/flowstt --exclude-drafts --exclude-pre-releases --limit 1 --json tagName -q '.[0].tagName' 2>/dev/null || true)
+          if [ -n "$TAG" ]; then
+            echo "VITE_DOWNLOAD_TAG=$TAG" >> "$GITHUB_ENV"
+            echo "Resolved download tag: $TAG"
+          else
+            echo "No published release found; download buttons will use fallback URL."
+          fi
+
       - name: Build
         run: pnpm build
 
