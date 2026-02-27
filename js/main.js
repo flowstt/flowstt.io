@@ -117,4 +117,84 @@
   // Initial call
   updateActiveNav();
 
+  // ---- Platform-Aware Download Buttons ----
+
+  var RELEASES_BASE = 'https://github.com/flowstt/flowstt/releases';
+
+  /**
+   * Detect the user's OS from navigator.userAgentData (modern) or
+   * navigator.userAgent (fallback). Returns 'windows', 'macos', or 'other'.
+   */
+  function detectPlatform() {
+    // navigator.userAgentData is available in Chromium-based browsers
+    if (navigator.userAgentData && navigator.userAgentData.platform) {
+      var p = navigator.userAgentData.platform.toLowerCase();
+      if (p.indexOf('win') !== -1) return 'windows';
+      if (p.indexOf('mac') !== -1) return 'macos';
+      return 'other';
+    }
+    // Fallback: legacy userAgent string
+    var ua = navigator.userAgent;
+    if (/Windows/i.test(ua)) return 'windows';
+    if (/Macintosh|Mac OS X/i.test(ua)) return 'macos';
+    return 'other';
+  }
+
+  /**
+   * Build download button content for a given platform.
+   * Returns { label, badgeText, href }.
+   */
+  function getDownloadConfig(platform) {
+    if (platform === 'windows') {
+      return {
+        label: 'Download for Windows',
+        badgeText: 'Windows',
+        href: RELEASES_BASE + '/latest'
+      };
+    }
+    if (platform === 'macos') {
+      return {
+        label: 'Download for macOS',
+        badgeText: 'macOS',
+        href: RELEASES_BASE + '/latest'
+      };
+    }
+    // Linux or unknown — link to the releases page
+    return {
+      label: 'View Releases',
+      badgeText: null,
+      href: RELEASES_BASE
+    };
+  }
+
+  function applyDownloadButton(btnId, labelId, config) {
+    var btn = document.getElementById(btnId);
+    var labelEl = document.getElementById(labelId);
+    if (!btn || !labelEl) return;
+
+    btn.href = config.href;
+
+    // Build label + optional platform badge
+    labelEl.textContent = config.label;
+    if (config.badgeText) {
+      var badge = document.createElement('span');
+      badge.className = 'btn-platform-badge';
+      badge.textContent = config.badgeText;
+      labelEl.appendChild(badge);
+    }
+  }
+
+  var platform = detectPlatform();
+  var dlConfig = getDownloadConfig(platform);
+
+  applyDownloadButton('hero-download-btn', 'hero-download-label', dlConfig);
+  applyDownloadButton('install-download-btn', 'install-download-label', dlConfig);
+
+  // Update "All Releases" secondary button text to "Other Platforms" when a
+  // primary platform is detected so the alternative is clearly labelled.
+  if (platform !== 'other') {
+    var releasesBtn = document.getElementById('hero-releases-btn');
+    if (releasesBtn) releasesBtn.textContent = 'Other Platforms';
+  }
+
 })();

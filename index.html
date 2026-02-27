@@ -31,18 +31,14 @@
 
       <div class="nav-links" id="nav-links" role="menubar">
         <a href="#features" role="menuitem">Features</a>
-        <a href="#architecture" role="menuitem">Architecture</a>
-        <a href="#demo" role="menuitem">Demo</a>
         <a href="#getting-started" role="menuitem">Get Started</a>
-        <a href="#vision" role="menuitem">Vision</a>
-        <a href="#contributing" role="menuitem">Contributing</a>
       </div>
 
       <div class="nav-right">
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle theme">
           <span class="theme-icon" aria-hidden="true"></span>
         </button>
-        <a href="https://github.com/keathley/flowstt" class="github-link" aria-label="FlowSTT on GitHub" target="_blank" rel="noopener noreferrer">
+        <a href="https://github.com/flowstt/flowstt" class="github-link" aria-label="FlowSTT on GitHub" target="_blank" rel="noopener noreferrer">
           <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         </a>
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -65,14 +61,19 @@
           <img class="logo-dark" src="/images/flowstt-landscape.svg" alt="FlowSTT" width="420" height="105">
           <img class="logo-light" src="/images/flowstt-landscape-light.svg" alt="FlowSTT" width="420" height="105">
         </div>
+        <div class="hero-demo">
+          <img src="/images/flowstt.gif" alt="FlowSTT desktop application showing real-time waveform and spectrogram visualization during speech transcription" loading="lazy" width="800" height="500">
+        </div>
         <h1>Privacy-First Voice Transcription</h1>
         <p class="tagline">A voice transcription agent for fluid, natural conversation. Real-time cadence analysis, intelligent speech detection, and rich automation capabilities &mdash; all running locally on your machine.</p>
         <div class="hero-actions">
-          <a href="https://github.com/keathley/flowstt" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            View on GitHub
+          <!-- Primary download button: injected by JS based on detected platform -->
+          <a id="hero-download-btn" href="https://github.com/flowstt/flowstt/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            <svg class="btn-icon-download" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.75 14A1.75 1.75 0 011 12.25v-2.5a.75.75 0 011.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25v-2.5a.75.75 0 011.5 0v2.5A1.75 1.75 0 0113.25 14H2.75z"/><path d="M7.25 7.689V2a.75.75 0 011.5 0v5.689l1.97-1.969a.749.749 0 111.06 1.06l-3.25 3.25a.749.749 0 01-1.06 0L4.22 6.78a.749.749 0 111.06-1.06l1.97 1.969z"/></svg>
+            <span id="hero-download-label">Download</span>
           </a>
-          <a href="#getting-started" class="btn btn-secondary">Get Started</a>
+          <!-- Other platforms / releases link -->
+          <a id="hero-releases-btn" href="https://github.com/flowstt/flowstt/releases" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">All Releases</a>
         </div>
       </div>
     </section>
@@ -98,27 +99,7 @@
           <div class="feature-card">
             <div class="feature-icon" aria-hidden="true">&#x26A1;</div>
             <h3>Hardware Accelerated</h3>
-            <p>NVIDIA CUDA on Windows and Linux, Apple Metal on macOS. Falls back to CPU when no GPU is available.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">&#x1F4CA;</div>
-            <h3>Real-Time Visualization</h3>
-            <p>60fps scrolling waveform and FFT-based spectrogram with a detailed speech activity graph showing detection internals.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">&#x1F399;</div>
-            <h3>Intelligent Speech Detection</h3>
-            <p>Multi-feature analysis: amplitude, zero-crossing rate, spectral centroid. Dual-mode voiced and whisper detection with transient rejection.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">&#x1F3A4;</div>
-            <h3>PTT &amp; Automatic Modes</h3>
-            <p>Push-to-Talk with configurable global hotkeys, or continuous automatic mode with VAD-based segment extraction and word-break timing.</p>
-          </div>
-          <div class="feature-card">
-            <div class="feature-icon" aria-hidden="true">&#x1F4DF;</div>
-            <h3>Full CLI</h3>
-            <p>Complete command-line interface with JSON output for headless operation, piping, and scripting. Auto-spawns the background service.</p>
+            <p>NVIDIA CUDA on Windows and Linux, Apple Metal (M-Series) on macOS. Falls back to CPU when no GPU is available.</p>
           </div>
           <div class="feature-card">
             <div class="feature-icon" aria-hidden="true">&#x1F50A;</div>
@@ -126,53 +107,6 @@
             <p>WebRTC AEC3 algorithm removes speaker feedback when capturing both microphone and system audio simultaneously.</p>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ===== Architecture ===== -->
-    <section id="architecture" class="vision">
-      <div class="container">
-        <div class="section-header">
-          <h2>Architecture</h2>
-          <p>Three cooperating components connected via platform-native IPC.</p>
-        </div>
-        <div class="arch-grid">
-          <div class="arch-card">
-            <div class="arch-icon" aria-hidden="true">&#x2699;</div>
-            <h3>Service</h3>
-            <div class="binary-name">flowstt-service</div>
-            <p>Background daemon handling audio capture, speech detection, and transcription. Runs independently of any client.</p>
-          </div>
-          <div class="arch-card">
-            <div class="arch-icon" aria-hidden="true">&#x1F4DF;</div>
-            <h3>CLI</h3>
-            <div class="binary-name">flowstt</div>
-            <p>Command-line interface for headless operation and scripting. Auto-spawns the service if not already running.</p>
-          </div>
-          <div class="arch-card">
-            <div class="arch-icon" aria-hidden="true">&#x1F5A5;</div>
-            <h3>GUI</h3>
-            <div class="binary-name">flowstt-app</div>
-            <p>Tauri 2.0 desktop application with real-time visualization, configuration window, and system tray integration.</p>
-          </div>
-        </div>
-        <div class="arch-ipc">
-          <p>Components communicate over <strong>platform-native IPC</strong> (Unix sockets on Linux/macOS, named pipes on Windows) using length-prefixed JSON messages. Multiple clients can connect simultaneously; the service broadcasts events to all subscribers.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Demo ===== -->
-    <section id="demo">
-      <div class="container">
-        <div class="section-header">
-          <h2>See It in Action</h2>
-          <p>Real-time waveform, spectrogram, and speech activity visualization.</p>
-        </div>
-        <div class="demo-container">
-          <img src="/images/flowstt.gif" alt="FlowSTT desktop application showing real-time waveform and spectrogram visualization during speech transcription" loading="lazy" width="800" height="500">
-        </div>
-        <p class="demo-caption">FlowSTT capturing and transcribing speech with live audio visualization.</p>
       </div>
     </section>
 
@@ -184,125 +118,22 @@
           <p>Get FlowSTT running on your system in minutes.</p>
         </div>
         <div class="getting-started-content">
-          <div>
-            <h3>System Requirements</h3>
-            <ul>
-              <li><strong>Windows 10+</strong> with WASAPI audio support</li>
-              <li><strong>Linux</strong> with PipeWire audio server</li>
-              <li><strong>macOS 12.3+</strong> with CoreAudio / ScreenCaptureKit</li>
-              <li>Optional: NVIDIA GPU (CUDA) or Apple Silicon (Metal) for accelerated inference</li>
-            </ul>
+          <h3>System Requirements</h3>
+          <ul>
+            <li><strong>Windows 10+</strong> with WASAPI audio support</li>
+            <li><strong>Linux</strong> with PipeWire audio server</li>
+            <li><strong>macOS 12.3+</strong> with CoreAudio / ScreenCaptureKit</li>
+            <li>Optional: NVIDIA GPU (CUDA) or Apple Silicon (Metal) for accelerated inference</li>
+          </ul>
 
-            <h3>Installation</h3>
-            <p>Download the latest release for your platform:</p>
-            <p>
-              <span class="placeholder-badge">Coming soon</span>
-              Release artifacts will be available on the
-              <a href="https://github.com/keathley/flowstt/releases" target="_blank" rel="noopener noreferrer">GitHub Releases</a> page.
-            </p>
-          </div>
-          <div>
-            <h3>Quick Start (CLI)</h3>
-<pre><code># List available audio devices
-flowstt list
-
-# Start transcribing from your microphone
-flowstt transcribe
-
-# Transcribe with echo cancellation (mic + system audio)
-flowstt transcribe --input &lt;mic-id&gt; --system &lt;output-id&gt; --echo-cancel
-
-# Check GPU availability
-flowstt gpu
-
-# Download the Whisper model
-flowstt model download
-
-# View service status
-flowstt status</code></pre>
-
-            <h3>Building from Source</h3>
-<pre><code># Clone the repository
-git clone https://github.com/keathley/flowstt.git
-cd flowstt
-
-# Install frontend dependencies
-pnpm install
-
-# Build the desktop application
-cargo tauri build</code></pre>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Vision / Roadmap ===== -->
-    <section id="vision" class="vision">
-      <div class="container">
-        <div class="section-header">
-          <h2>Vision &amp; Roadmap</h2>
-          <p>FlowSTT aims to become a conversational voice agent where timing, cadence, and intent all matter.</p>
-        </div>
-        <div class="roadmap-grid">
-          <div class="roadmap-card" data-number="1">
-            <div class="roadmap-icon" aria-hidden="true">&#x1F3B5;</div>
-            <h3>Real-Time Cadence Analysis</h3>
-            <p>Detect natural pauses vs. intentional breaks. Distinguish thinking pauses from end-of-thought pauses. Learn individual speech patterns over time.</p>
-          </div>
-          <div class="roadmap-card" data-number="2">
-            <div class="roadmap-icon" aria-hidden="true">&#x23F1;</div>
-            <h3>Adaptive Timeouts</h3>
-            <p>Dynamic timeout adjustment based on conversational context. Extended waits for mid-sentence pauses, shorter timeouts for simple commands.</p>
-          </div>
-          <div class="roadmap-card" data-number="3">
-            <div class="roadmap-icon" aria-hidden="true">&#x2705;</div>
-            <h3>Acknowledgment Feedback</h3>
-            <p>Audible confirmation when input is captured. Processing indicators during transcription. Eliminate the "did it hear me?" uncertainty.</p>
-          </div>
-          <div class="roadmap-card" data-number="4">
-            <div class="roadmap-icon" aria-hidden="true">&#x270B;</div>
-            <h3>Interrupt Handling</h3>
-            <p>Graceful soft and hard interrupts. Continue speaking during processing or explicitly redirect. Recovery with clarifying questions.</p>
-          </div>
-          <div class="roadmap-card" data-number="5">
-            <div class="roadmap-icon" aria-hidden="true">&#x1F4AC;</div>
-            <h3>Dynamic Query &amp; Follow-up</h3>
-            <p>Active conversation participation with confidence-driven clarification, contextual questions, and intent assessment before action.</p>
-          </div>
-          <div class="roadmap-card" data-number="6">
-            <div class="roadmap-icon" aria-hidden="true">&#x1F680;</div>
-            <h3>Workflow Automation</h3>
-            <p>Execute file operations, application control, and system commands from natural language. Chain actions from single conversational exchanges.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Contributing ===== -->
-    <section id="contributing">
-      <div class="container">
-        <div class="section-header">
-          <h2>Contributing</h2>
-          <p>FlowSTT is open source and contributions are welcome.</p>
-        </div>
-        <div class="contributing-grid">
-          <div class="contributing-card">
-            <div class="contrib-icon" aria-hidden="true">&#x1F41B;</div>
-            <h3>Report Issues</h3>
-            <p>Found a bug or have a feature request? Open an issue on GitHub.</p>
-            <a href="https://github.com/keathley/flowstt/issues" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Open an Issue</a>
-          </div>
-          <div class="contributing-card">
-            <div class="contrib-icon" aria-hidden="true">&#x1F4DD;</div>
-            <h3>Code of Conduct</h3>
-            <p><span class="placeholder-badge">Coming soon</span></p>
-            <p>We are committed to providing a welcoming and inclusive experience for everyone.</p>
-          </div>
-          <div class="contributing-card">
-            <div class="contrib-icon" aria-hidden="true">&#x1F4E2;</div>
-            <h3>Community</h3>
-            <p><span class="placeholder-badge">Coming soon</span></p>
-            <p>Community channels will be announced here. For now, use GitHub Discussions.</p>
+          <h3>Installation</h3>
+          <p>Download the latest release for your platform:</p>
+          <div class="install-download-group">
+            <a id="install-download-btn" href="https://github.com/flowstt/flowstt/releases" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              <svg class="btn-icon-download" viewBox="0 0 16 16" aria-hidden="true"><path d="M2.75 14A1.75 1.75 0 011 12.25v-2.5a.75.75 0 011.5 0v2.5c0 .138.112.25.25.25h10.5a.25.25 0 00.25-.25v-2.5a.75.75 0 011.5 0v2.5A1.75 1.75 0 0113.25 14H2.75z"/><path d="M7.25 7.689V2a.75.75 0 011.5 0v5.689l1.97-1.969a.749.749 0 111.06 1.06l-3.25 3.25a.749.749 0 01-1.06 0L4.22 6.78a.749.749 0 111.06-1.06l1.97 1.969z"/></svg>
+              <span id="install-download-label">Download</span>
+            </a>
+            <a href="https://github.com/flowstt/flowstt/releases" class="install-all-releases" target="_blank" rel="noopener noreferrer">All releases &rarr;</a>
           </div>
         </div>
       </div>
@@ -318,9 +149,9 @@ cargo tauri build</code></pre>
         <img class="logo-light" src="/images/flowstt-icon.svg" alt="FlowSTT icon" width="32" height="32">
       </div>
       <div class="footer-links">
-        <a href="https://github.com/keathley/flowstt" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://github.com/keathley/flowstt/issues" target="_blank" rel="noopener noreferrer">Issues</a>
-        <a href="https://github.com/keathley/flowstt/releases" target="_blank" rel="noopener noreferrer">Releases</a>
+        <a href="https://github.com/flowstt/flowstt" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://github.com/flowstt/flowstt/issues" target="_blank" rel="noopener noreferrer">Issues</a>
+        <a href="https://github.com/flowstt/flowstt/releases" target="_blank" rel="noopener noreferrer">Releases</a>
       </div>
       <p class="footer-copy">
         <span class="placeholder-badge">License TBD</span>
