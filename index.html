@@ -68,7 +68,23 @@
           <img class="logo-light" src="/images/flowstt-landscape-light.svg" alt="FlowSTT" width="420" height="105">
         </div>
         <div class="hero-demo">
-          <img src="/images/flowstt.gif" alt="FlowSTT desktop application showing real-time waveform and spectrogram visualization during speech transcription" loading="lazy" width="800" height="500">
+          <video id="hero-video" autoplay loop muted playsinline aria-label="FlowSTT desktop application showing real-time waveform and spectrogram visualization during speech transcription">
+            <source src="/media/flowstt-video.mp4" type="video/mp4">
+          </video>
+          <button class="video-mute-toggle" id="video-mute-toggle" aria-label="Unmute video" aria-pressed="false">
+            <!-- Muted: speaker with X -->
+            <svg class="icon-muted" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <line x1="23" y1="9" x2="17" y2="15"/>
+              <line x1="17" y1="9" x2="23" y2="15"/>
+            </svg>
+            <!-- Unmuted: speaker with waves -->
+            <svg class="icon-unmuted" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+            </svg>
+          </button>
         </div>
         <h1>Privacy-First Voice Transcription</h1>
         <p class="tagline">FlowSTT is a free, privacy-first speech-to-text application that runs entirely on your local machine. No subscriptions, no signups, no cloud services —- your voice data never leaves your computer.</p>
@@ -159,7 +175,7 @@
       </div>
       <p class="footer-copy">
         <a href="https://github.com/flowstt/flowstt/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">MIT License</a>
-        &middot; &copy; 2025&ndash;2026 FlowSTT Contributors
+        &middot; &copy; 2025&ndash;2026 KMX Consulting LLC
       </p>
     </div>
   </footer>

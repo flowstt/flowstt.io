@@ -55,6 +55,20 @@
     });
   }
 
+  // ---- Hero Video Mute Toggle ----
+
+  var heroVideo = document.getElementById('hero-video');
+  var muteToggle = document.getElementById('video-mute-toggle');
+
+  if (heroVideo && muteToggle) {
+    muteToggle.addEventListener('click', function () {
+      heroVideo.muted = !heroVideo.muted;
+      var unmuted = !heroVideo.muted;
+      muteToggle.setAttribute('aria-pressed', unmuted ? 'true' : 'false');
+      muteToggle.setAttribute('aria-label', unmuted ? 'Mute video' : 'Unmute video');
+    });
+  }
+
   // ---- Mobile Hamburger Menu ----
 
   var hamburger = document.getElementById('hamburger');
