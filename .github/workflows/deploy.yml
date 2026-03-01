@@ -35,13 +35,13 @@ jobs:
 
       - name: Resolve latest release tag for download URLs
         # Query the latest published (non-draft, non-pre-release) release tag
-        # and export it so Vite can bake direct installer URLs into the bundle.
+        # via the unauthenticated public GitHub API (works across repos without
+        # cross-repo token permissions) and export it so Vite can bake direct
+        # installer URLs into the bundle.
         # Uses || true so that a missing release does not fail the build;
         # vite.config.js falls back to /releases/latest when the var is unset.
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TAG=$(gh release list --repo flowstt/flowstt --exclude-drafts --exclude-pre-releases --limit 1 --json tagName -q '.[0].tagName' 2>/dev/null || true)
+          TAG=$(curl -sf https://api.github.com/repos/flowstt/flowstt/releases/latest | jq -r '.tag_name // empty' 2>/dev/null || true)
           if [ -n "$TAG" ]; then
             echo "VITE_DOWNLOAD_TAG=$TAG" >> "$GITHUB_ENV"
             echo "Resolved download tag: $TAG"
