@@ -815,6 +815,14 @@ body {
   margin-bottom: 0;
 }
 
+.footer-copy a {
+  color: var(--color-text-secondary);
+}
+
+.footer-copy a:hover {
+  color: var(--color-text);
+}
+
 /* --- Responsive: Tablet (768px) --- */
 @media (max-width: 1023px) {
   .features-grid {
